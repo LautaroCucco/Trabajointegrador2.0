@@ -34,27 +34,27 @@ let data = {
             imagen : '',
             nombre : 'Buggatti Chiron',
             descripcion : 'Es 0 km y viene con un motor  motor W16 a 90° sobrealimentado por cuádruples turbocompresores con una potencia de 1500 CV.',
-            fechaDeCarga : '',
-            id : '',
+            fechaDeCarga : '05/04/2023',
+            id : '3456789123',
 
         }, {
             imagen : '',
-            nombre : '',
-            descripcion : '',
-            fechaDeCarga : '',
-            id : '',
+            nombre : 'Honda Civic 2.0 Si Mt',
+            descripcion : 'Tiene un kilometraje de 103.543 km y viene con un motor 2.0 el cual proporciona una potencia de 203 CV.',
+            fechaDeCarga : '18/08/2022',
+            id : '4567891234',
 
         }, {
             imagen : '',
-            nombre : '',
-            descripcion : '',
-            fechaDeCarga : '',
-            id : '',
+            nombre : 'Ferrari f40',
+            descripcion : 'Tiene un kilometraje de 23.000 km y viene con un motor V8 con cuatro válvulas por cilindro, este proporciona una potencia de 478 CV.',
+            fechaDeCarga : '20/05/2022',
+            id : '5678912345',
 
         }, {
             imagen : '',
-            nombre : '',
-            descripcion : '',
+            nombre : 'Mclaren 720s',
+            descripcion : 'Es o ',
             fechaDeCarga : '',
             id : '',
 
