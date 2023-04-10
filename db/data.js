@@ -5,7 +5,8 @@ let data = {
         contrasena : '',
         fechaDeNacimiento : '06/09/2003',
         dni : '45013211',
-        fotoDePerfil : ''
+        fotoDePerfil : '',
+        logueado: true
     },
     productos : [
         {

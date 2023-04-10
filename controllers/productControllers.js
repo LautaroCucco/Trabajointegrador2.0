@@ -7,5 +7,13 @@ var productController = {
             productos: dataBase.productos,
             comentarios: dataBase.comentarios,
         })
+    },
+    showProductAdd: function (req,res){
+        return res.render('product-add',{
+            usuario: dataBase.usuario,
+            logueado: dataBase.usuario.logueado
+        })
     }
 }
+
+module.exports = productController
