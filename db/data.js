@@ -61,11 +61,24 @@ let data = {
 
         }, {
             imagen : '',
-            nombre : '',
-            descripcion : '',
-            fechaDeCarga : '',
+            nombre : 'Toyota Yaris GR',
+            descripcion : '4.000 km, motor 1.6 Turbo listo para transferir',
+            fechaDeCarga : '10/04/2023',
             id : '',
 
+        }, {
+            imagen : '',
+            nombre : 'Alfa Romeo Giulia Quadrifoglio',
+            descripcion : 'La unidad cuenta con 14.000 km y un motor de 2.9 V6 con una potencia de 510cv',
+            fechaDeCarga : '15/03/2023',
+            id : '',
+        
+        }, {
+            imagen : '',
+            nombre : 'Ford F-150 Raptor',
+            descripcion : '0 km con su motor 3.5l Bi-turbo y todo el confort que un usuario de Ford se merece',
+            fechaDeCarga : '04/01/2023',
+            id : '',
         }
     ],
     comentarios : [ 
@@ -76,7 +89,7 @@ let data = {
 
         },
         {
-            nombreDeUs : 'Cuccovich',
+            nombreDeUs : 'Cucco',
             textoDelComentario : 'Hola! Que dias esta abierta la consecionaria?',
             fotoDePer : '',
 
