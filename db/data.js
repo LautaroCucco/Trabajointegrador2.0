@@ -54,9 +54,9 @@ let data = {
         }, {
             imagen : '',
             nombre : 'Mclaren 720s',
-            descripcion : 'Es o ',
-            fechaDeCarga : '',
-            id : '',
+            descripcion : 'Es 0 km  motor V8 biturbo, que produce 720 CV ',
+            fechaDeCarga : '12/03/2023',
+            id : '6789123456',
 
         }, {
             imagen : '',
