@@ -71,28 +71,28 @@ let data = {
     comentarios : [ 
         {
             nombreDeUs : 'Alevivonecai',
-            textoDelComentario : '',
+            textoDelComentario : 'Buenas! Queria consultar para ir a ver el Honda ¿Que dias se podria ir a ver?',
             fotoDePer : '',
 
         },
         {
             nombreDeUs : 'Cuccovich',
-            textoDelComentario : '',
+            textoDelComentario : 'Hola! Que dias esta abierta la consecionaria?',
             fotoDePer : '',
 
         },{
             nombreDeUs : 'Juani_morozumi',
-            textoDelComentario : '',
+            textoDelComentario : 'Buenas! Queria sacar un turno para ir a ver el Ferrari f40 y consultar por una cotizacion ¿Que dias estarian disponibles?',
             fotoDePer : '',
 
         },{
             nombreDeUs : 'JoaquinGarcia7',
-            textoDelComentario : '',
+            textoDelComentario : 'Abren el jueves feriado por semana santa? ',
             fotoDePer : '',
 
         },{
             nombreDeUs : 'Bautycanalla',
-            textoDelComentario : '',
+            textoDelComentario : 'Hola! Hasta que horario tienen abierto los dias martes?',
             fotoDePer : '',
 
         },
