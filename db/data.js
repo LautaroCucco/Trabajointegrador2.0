@@ -87,8 +87,7 @@ let data = {
             textoDelComentario : 'Buenas! Queria consultar para ir a ver el Honda ¿Que dias se podria ir a ver?',
             fotoDePer : '',
 
-        },
-        {
+        },{
             nombreDeUs : 'Cucco',
             textoDelComentario : 'Hola! Que dias esta abierta la consecionaria?',
             fotoDePer : '',
@@ -104,11 +103,64 @@ let data = {
             fotoDePer : '',
 
         },{
-            nombreDeUs : 'Bautycanalla',
+            nombreDeUs : 'Cucco',
             textoDelComentario : 'Hola! Hasta que horario tienen abierto los dias martes?',
             fotoDePer : '',
 
-        },
+        },{
+            nombreDeUs : 'Juani_morozumi',
+            textoDelComentario : 'Buenas, me interesa el vehiculo',
+            fotoDePer : '',
+       
+        },{
+            nombreDeUs : 'JoaquinGarcia7',
+            textoDelComentario : 'Me interesa mucho el auto que estás vendiendo. ¿Podrías darme más detalles sobre su historial de mantenimiento?',
+            fotoDePer : '',
+
+        },{
+            nombreDeUs : 'Bauticanalla',
+            textoDelComentario : 'Estuve buscando este modelo específico durante meses, y este parece ser el adecuado. ¿Podríamos programar un test drive?',
+            fotoDePer : '',
+        
+        },{
+            nombreDeUs : 'Juani_Morozumi',
+            textoDelComentario : 'Tengo algunas preguntas sobre el kilometraje del auto. ¿Podrías aclarar si es original o si el motor ha sido reconstruido?',
+            fotoDePer : '',
+        
+        },{
+            nombreDeUs : 'JoaquinGarcia7',
+            textoDelComentario : 'Este auto parece estar en excelentes condiciones, pero me gustaría llevarlo a mi mecánico antes de comprarlo. ¿Se podria permitir una inspección por parte de un mecánico de mi elección?',
+            fotoDePer : '',
+      
+        },{
+            nombreDeUs : 'Bauticanalla',
+            textoDelComentario : 'Estoy buscando un auto para mi hijo que acaba de obtener su  registro, podrías decirme cuánto tiempo estuvo parado el auto?',
+            fotoDePer : '',
+        },{
+            nombreDeUs : 'Alevivonecai',
+            textoDelComentario : 'Me encanta el color de este auto. ¿Podría proporcionar algunas fotos adicionales del exterior y del interior?',
+            fotoDePer : '',
+            
+        },{
+            nombreDeUs : 'JoaquinGarcia7',
+            textoDelComentario : '¿Cuál es el precio final para el auto? Estoy dispuesto a hacer una oferta, pero necesito saber tu precio de venta mínimo.',
+            fotoDePer : '',
+       
+        },{
+            nombreDeUs : 'Bauticanalla',
+            textoDelComentario : 'Me gusta mucho el estilo y la apariencia del auto, pero tengo algunas preocupaciones sobre la seguridad. ¿Podría proporcionar información sobre las características de seguridad?',
+            fotoDePer : '',
+        
+        },{
+            nombreDeUs : 'Alevivonecai',
+            textoDelComentario : 'Precio?',
+            fotoDePer : '',
+        
+        },{
+            nombreDeUs : 'Cucco',
+            textoDelComentario : 'Estoy interesado en comprar este auto para mi negocio. ¿Podrías proporcionar una factura de venta y algún tipo de garantía?',
+            fotoDePer : '',
+        }
     ],
 
 
