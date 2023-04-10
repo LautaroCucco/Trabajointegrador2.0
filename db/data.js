@@ -70,28 +70,28 @@ let data = {
     ],
     comentarios : [ 
         {
-            nombreDeUs : '',
+            nombreDeUs : 'Alevivonecai',
             textoDelComentario : '',
             fotoDePer : '',
 
         },
         {
-            nombreDeUs : '',
+            nombreDeUs : 'Cuccovich',
             textoDelComentario : '',
             fotoDePer : '',
 
         },{
-            nombreDeUs : '',
+            nombreDeUs : 'Juani_morozumi',
             textoDelComentario : '',
             fotoDePer : '',
 
         },{
-            nombreDeUs : '',
+            nombreDeUs : 'JoaquinGarcia7',
             textoDelComentario : '',
             fotoDePer : '',
 
         },{
-            nombreDeUs : '',
+            nombreDeUs : 'Bautycanalla',
             textoDelComentario : '',
             fotoDePer : '',
 
