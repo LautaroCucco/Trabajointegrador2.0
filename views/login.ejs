@@ -2,14 +2,14 @@
 <html lang="es">
 <!-- Include Head -->
 
-<%- include('./partes/head.ejs')  %> 
+<%- include('./partials/head.ejs')  %> 
 
 <body>
 	<!-- Include Header -->
 	<%if (logueado){%>
-		<%- include("./partes/headerLogueado.ejs") %>
+		<%- include("./partials/headerLogueado.ejs") %>
 		<%} else { %>
-		<%- include("./partes/headerNoLogueado.ejs") %>
+		<%- include("./partials/headerNoLogueado.ejs") %>
 	<% } %>
 
 	<!-- Novedades -->
@@ -48,7 +48,7 @@
 
 
 <!-- footer -->
-	<%- include('./partes/footer.ejs')  %> 
+	<%- include('./partials/footer.ejs')  %> 
 <!-- /footer -->
 </body>
 

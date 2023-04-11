@@ -2,7 +2,7 @@ var dataBase = require ('../db/data');
 
 var indexController = {
     showIndex: function (req, res){
-        return res.render('index',{
+        return res.render('indexx',{
             usuario: dataBase.usuario,
             productos: dataBase.productos,
             logueado: dataBase.usuario.logueado

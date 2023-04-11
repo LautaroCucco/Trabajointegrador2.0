@@ -10,7 +10,7 @@ let data = {
     },
     productos : [
         {
-            imagen : '',
+            imagen : '/images/toyotasupramk4.jpg',
             nombre : 'Toyota Supra mk4',
             descripcion : 'Tiene un kilometraje de 150.000 km y viene con un motor  2JZ desarrollado por YAMAHA. Los 6 cilindros y dos turbocompresores generan 324 CV.',
             fechaDeCarga : '10/03/2023',
@@ -18,49 +18,49 @@ let data = {
 
         },
         {
-            imagen : '',
+            imagen : '/images/NissanSkylinegtrr34.jpg',
             nombre : 'Nissan Skyline GTR R34',
             descripcion : 'Tiene un kilometraje de 144.586 km y viene con un motor RB26DETT, con seis cilindros en línea generando 503 CV.',
             fechaDeCarga : '11/12/2022',
             id : '1234567891',
 
         }, {
-            imagen : '',
+            imagen : '/images/Lamboaventador.jpg',
             nombre : 'Lamborghini Aventador',
             descripcion : 'Tiene un kilometraje de 35.869 km y viene con un motor un motor V12, el cual provee una potencia máxima de 700 CV.',
             fechaDeCarga : '03/04/2023',
             id : '2345678912',
 
         }, {
-            imagen : '',
-            nombre : 'Buggatti Chiron',
+            imagen : '/images/bugattichiron.jpg',
+            nombre : 'Bugatti Chiron',
             descripcion : 'Es 0 km y viene con un motor  motor W16 a 90° sobrealimentado por cuádruples turbocompresores con una potencia de 1500 CV.',
             fechaDeCarga : '05/04/2023',
             id : '3456789123',
 
         }, {
-            imagen : '',
-            nombre : 'Honda Civic 2.0 Si Mt',
+            imagen : '/images/civicsimt.jpg',
+            nombre : 'Honda Civic 2.0 Si Mt ',
             descripcion : 'Tiene un kilometraje de 103.543 km y viene con un motor 2.0 el cual proporciona una potencia de 203 CV.',
             fechaDeCarga : '18/08/2022',
             id : '4567891234',
 
         }, {
-            imagen : '',
+            imagen : '/images/f40.jpg',
             nombre : 'Ferrari f40',
             descripcion : 'Tiene un kilometraje de 23.000 km y viene con un motor V8 con cuatro válvulas por cilindro, este proporciona una potencia de 478 CV.',
             fechaDeCarga : '20/05/2022',
             id : '5678912345',
 
         }, {
-            imagen : '',
+            imagen : '/images/720s.jpg',
             nombre : 'Mclaren 720s',
             descripcion : 'Es 0 km  motor V8 biturbo, que produce 720 CV ',
             fechaDeCarga : '12/03/2023',
             id : '6789123456',
 
         }, {
-            imagen : '',
+            imagen : '/images/yarisgr.jpg',
             nombre : 'Toyota Yaris GR',
             descripcion : '4.000 km, motor 1.6 Turbo listo para transferir',
             fechaDeCarga : '10/04/2023',
