@@ -4,7 +4,8 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: #00000081;
+  --white: #ffffff;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -43,7 +44,7 @@ ol {
 a {
   display: inline-block;
   text-decoration: none;
-  color: inherit;
+  color: white;
 }
 
 figure {
@@ -172,11 +173,11 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--gray);
+  color: var(--white);
 }
 
 .product-box {
-  background-color: #ffffff;
+  background-color: var(--yellow);
   border-radius: 5px;
   overflow: hidden;
   transition: 300ms;
@@ -185,6 +186,7 @@ hr {
 
 .product-box a {
   display: block;
+  color: var(--white);
 }
 
 .product-box_image {
