@@ -67,14 +67,14 @@ let data = {
             id : '',
 
         }, {
-            imagen : '',
+            imagen : '/images/AlfaGiulia.jpeg',
             nombre : 'Alfa Romeo Giulia Quadrifoglio',
             descripcion : 'La unidad cuenta con 14.000 km y un motor de 2.9 V6 con una potencia de 510cv',
             fechaDeCarga : '15/03/2023',
             id : '',
         
         }, {
-            imagen : '',
+            imagen : '/images/FordF150.jpg',
             nombre : 'Ford F-150 Raptor',
             descripcion : '0 km con su motor 3.5l Bi-turbo y todo el confort que un usuario de Ford se merece',
             fechaDeCarga : '04/01/2023',
