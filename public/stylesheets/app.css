@@ -262,7 +262,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #00000081;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -277,13 +277,13 @@ hr {
 }
 
 .footer-data h2 {
-  color: var(--gray);
+  color: var(--white);
   font-size: 2.4em;
   font-weight: 400;
 }
 
 .footer-data p {
-  color: var(--gray);
+  color: var(--white);
   font-size: 1.5em;
   font-weight: 300;
 }
