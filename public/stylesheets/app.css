@@ -39,6 +39,7 @@ ol {
   list-style: none;
   margin: 0;
   padding: 0;
+  color: white
 }
 
 a {
@@ -470,6 +471,7 @@ textarea.form-input {
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
+  color: white
 }
 
 .btn{
