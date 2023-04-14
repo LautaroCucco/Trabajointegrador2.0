@@ -1,11 +1,12 @@
 var dataBase = require('../db/data')
 
-var profileController = {
+var profileControllers = {
     showProfile: function(req, res){
         return res.render('profile',{
             usuario: dataBase.usuario,
             productos: dataBase.productos,
-            logueado: dataBase.usuario.logueado,
+            logueado: dataBase.usuario.logueado, 
+            comentarios: dataBase.comentarios,
             
         })
     },
@@ -17,4 +18,4 @@ var profileController = {
     }
 }
 
-module.exports = profileController
+module.exports = profileControllers
