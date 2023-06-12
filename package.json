@@ -13,6 +13,7 @@
     "express-load": "^1.1.16",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "sequelize": "^6.31.1"
+    "mysql2": "^3.3.4",
+    "sequelize": "^6.32.0"
   }
 }
