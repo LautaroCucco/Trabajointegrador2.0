@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/productControllers');
+const productController = require('../controllers/productController');
+
 
 // Configuracion de Multer para subir foto del producto
 let multer = require('multer');
@@ -39,8 +40,18 @@ router.get('/edit/:id' , productController.showProductEdit);
 
 router.post('/edit/:id', upload.single('imgProduct'), productController.updateProduct);
 
+router.get('/id/:id', productController.show);
 
 
+router.get('/add', productController.add);
+router.post('/add', productController.storeProduct);
 
+router.get("/update/:id", productController.formUpdate);
+router.post("/update/:id", productController.updatePost);
 
+router.get('/search', productController.search);
+
+router.post('/comentario/:id', productController.storeComentario);
+
+router.post('/eliminar', productController.eliminarProducto);
 module.exports = router;

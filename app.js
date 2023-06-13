@@ -2,7 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+
+/* var logger = require('morgan'); */
 
 //Rutas
 
@@ -12,9 +13,8 @@ const productRouter = require('./routes/products');
 const searchResultsRouter = require('./routes/search-results')
 const session = require ('express-session')
 const db = require('./database/models')
-const user = db.users
-var app = express();
 
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,12 +31,6 @@ app.use('/users', usersRouter);
 app.use('/productos', productRouter)
 app.use('/search', searchResultsRouter)
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -46,5 +40,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
 
 module.exports = app;
