@@ -20,10 +20,27 @@
 				<h2 class="products-title">Resultados de busqueda: </h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i><br> Acá van los resultados de búsqueda. <br>
-			 <br>
-			
-			</h2>
+			<% if (listaProductos.length == 0) { %>
+				<h2>No hay resultados para tu búsqueda</h2>
+			   <% } else {%>
+				   <% for( let i = 0; i < listaProductos.length; i++ ) { %>
+					   <article class="col-12 col-sm-6 col-lg-3">
+						   <section class="product-box">
+							   <a href="id/<%=listaProductos[i].id%>">
+								   <figure class="product-box_image">
+									   <img src="<%=listaProductos[i].foto %>" alt="Imagen de <%=listaProductos[i].nombre %>">
+								   </figure>
+								   <article class="product-box_data">
+									   <h2><%=listaProductos[i].nombre %></h2>
+									   <p><%=listaProductos[i].descripcion %></p>
+									   <p>Comentarios: <%= listaProductos[i].perfil.comentario.length %></p>
+									   <p>Creador: <a href="profile/id/<%= listaProductos[i].perfil.id %>"> <%= listaProductos[i].perfil.usuario %> </a></p>
+								   </article>
+							   </a>
+						   </section>
+					   </article>
+				   <% } %>
+			   <% } %>
 
 
 	<!-- footer -->
