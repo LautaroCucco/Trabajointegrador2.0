@@ -1,29 +1,24 @@
-var dataBase = require ('../db/data');
+const db = require('../db/models');
+const producto = db.Producto
 
 
-var indexController = {
-    showIndex: function (req, res){
-        return res.render('indexx',{
-            usuario: dataBase.usuario,
-            productos: dataBase.productos,
-            logueado: dataBase.usuario.logueado
+const indexController = {
+     index: (req, res) => {
+        producto.findAll(  
+        {
+            include: [ { association: 'user' }],
+            order: [[ "createdAt" , "DESC"]]
+        }
+        )
+        .then((result) => {
+            return res.render('indexx', {producto : result})
 
-        })
-    },
-    showLogin: function (req, res){
-        return res.render('login',{
-            usuario: dataBase.usuario,
-            logueado: dataBase.usuario.logueado
-        })
-    },
-    showRegister: function (req, res){
-        return res.render('register',{
-            usuario: dataBase.usuario,
-            logueado: dataBase.usuario.logueado
-        })
-    }
+        }).catch((err) => {
+            console.log(err);
+        });
+     }, 
 }
-
+module.exports = indexController
 
 
 
