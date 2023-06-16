@@ -37,7 +37,7 @@ const profileController = {
         let errors = {};
 
         if (info.email == "") {
-            errors.message = 'The email is empty';
+            errors.message = 'El campo email esta vacio';
             res.locals.errors = errors;
             return res.render('login')
 
@@ -70,7 +70,7 @@ const profileController = {
                             return res.render('login')
                         }
                     } else {
-                        errors.message = 'The email does not exists';
+                        errors.message = 'El email no existe';
                         res.locals.errors = errors;
                         return res.render('login')
                     }
@@ -106,7 +106,7 @@ const profileController = {
             return res.render('register')
 
         } else if (info.nombre.length == "") {
-            errors.message = 'Your name is required';
+            errors.message = 'Ingresar tu nombre';
             res.locals.errors = errors;
             return res.render('register')
         
@@ -138,7 +138,7 @@ const profileController = {
                         
                     }
                     else {
-                        errors.message = 'The email already exists';
+                        errors.message = 'Este email ya esta registrado';
                         res.locals.errors = errors;;
                         return res.render('register')
                     }
@@ -154,7 +154,7 @@ const profileController = {
     
     logout: (req, res) => {
         req.session.destroy();
-        res.clearCookie('userId');
+        res.clearCookie('usuario_id');
         return res.redirect('/')
     },
 
@@ -175,7 +175,7 @@ const profileController = {
                 nombre: info.nombre,
                 apellido: info.apellido,
                 foto: foto_perfil,
-                users_id : info.users_id
+                usuario_id : info.usuario_id
             }
             let filtro = {
                 where: {
@@ -222,9 +222,9 @@ const profileController = {
                     }
                 }).then((result) => {
                     let errors = { };
-                    errors.message = "You already follow this user";
+                    errors.message = "Ya estas siguiendo a este usuario";
                     res.locals.errors = errors
-                    return res.render('profile', {profile: result})
+                    return res.render('perfil', {perfil: result})
                 }).catch((err) => {
                     
                 });
@@ -236,7 +236,7 @@ const profileController = {
                 }
                 follower.create(seguimiento)
                 .then((result) => {
-                    res.redirect(`/profile/${info.id_usuario_seguido}`)
+                    res.redirect(`/perfil/${info.id_usuario_seguido}`)
                 }).catch((err) => {
                     console.log(err);
                 });
