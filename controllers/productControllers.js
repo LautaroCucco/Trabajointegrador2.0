@@ -154,6 +154,9 @@ const productController = {
         });
        
     },
+    formUpdate: (req, res) =>{
+        return res.send("hola")
+    }
 
 };
 

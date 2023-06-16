@@ -1,17 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const profileController = require('../controllers/profileController');
+const profileController = require('../controllers/profileControllers');
 
 //router.get('/', profileController.show);
 router.get('/id/:id', profileController.showProfile);
 
 // REGISTER
 router.get('/register', profileController.register); 
-router.post('/register', profileController.store); 
 
 // LOGIN
-router.get('/login', profileController.showlogin);
-router.post('/login', profileController.loginPost);
+router.get('/login', profileController.login);
+router.post('/login', profileController.);
 //EDIT
 router.get('/edit', profileController.edit);
 router.post('/edit', profileController.editPost);

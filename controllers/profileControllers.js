@@ -2,7 +2,6 @@ const db = require('../database/models');
 
 const Usuario = db.Usuario
 const bcrypt = require('bcryptjs');
-const Usuario = require('../database/models/usuario');
 const Seguidor = db.Seguidor
 
 const profileController = {
@@ -244,12 +243,7 @@ const profileController = {
         }).catch((err) => {
             
         });
-    },
-
-
-
-
-
+    }
 };
 
 module.exports = profileController;
