@@ -6,7 +6,7 @@ const indexController = {
      index: (req, res) => {
         producto.findAll(  
         {
-            include: [ { association: 'user' }],
+            include: [ { association: 'perfil' }],
             order: [[ "createdAt" , "DESC"]]
         }
         )
