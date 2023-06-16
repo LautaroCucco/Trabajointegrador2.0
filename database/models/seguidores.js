@@ -1,5 +1,3 @@
-const db = {};
-
 module.exports = (sequelize, dataTypes) => {
 
     let alias = 'Follower'
@@ -31,4 +29,4 @@ module.exports = (sequelize, dataTypes) => {
 
 }
 
-module.exports = db;
+// module.exports = database;

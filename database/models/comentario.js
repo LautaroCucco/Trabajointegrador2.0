@@ -1,5 +1,3 @@
-const db = {};
-
 // module.exports = (sequelize, dataTypes) => {
 
 //     let alias = 'Comentario'
