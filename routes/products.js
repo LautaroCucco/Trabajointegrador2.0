@@ -10,11 +10,11 @@ router.post('/add', productControllers.store);
 
 
 router.get("/update/:id", productControllers.formUpdate);
-router.post("/update/:id", productControllers.);
+router.post("/update/:id", productControllers.updatePost);
 
 router.get('/search', productControllers.search);
 
-router.post('/comentario/:id', productControllers.);
+router.post('/comentario/:id', productControllers.storeComentario);
 
 router.post('/eliminar', productControllers.deleteProduct);
 

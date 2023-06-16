@@ -150,7 +150,7 @@ const profileController = {
 
 
     },
-    loginPost: (req.res) {
+    loginPost: (req, res) => {
         let emailBuscar = req.body.email;
         let contraseniaBuscar = req.body.contrasenia;
 
@@ -197,8 +197,25 @@ const profileController = {
             }).catch((err) => {
                 console.log(err);
             }); 
+        }    
 
 
+    },
+    editPost: (req, res) => {
+        let infoPerfil = req.body;
+        let id = req.session.user.id;
+        let filtrado = {
+          where : [
+            {id: id}
+          ]
+        }
+        perfil.update(infoPerfil, filtrado)
+        .then((resultado) => {
+            
+          return res.redirect("/profile/id/" + id)
+        }).catch((err) => {
+          console.log(err);
+        });
     },
     
     logout: (req, res) => {
@@ -207,7 +224,7 @@ const profileController = {
         return res.redirect('/')
     },
 
-    showProfileEdit; (req, res) => {
+    showProfileEdit: (req, res) => {
         let id = req.params.id;
         user.findByPk(id).then((result) => {
         return res.render('profile-edit', {usuario : result})
@@ -216,7 +233,7 @@ const profileController = {
         });
     },
 
-    updateProfile; (req, res) => {
+    updateProfile: (req, res) => {
             let info = req.body;
             let foto_perfil = req.file.filename;
             let usuario = {
@@ -249,7 +266,7 @@ const profileController = {
             
     
     },
-    follow ; (req,res) => {
+    follow: (req,res) => {
         let filtro = {
             where: [
                 {   id_usuario_seguido: req.params.id,

@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 const session = require ('express-session');
-/* var logger = require('morgan'); */
+var logger = require('morgan');
 
 //Rutas
 const db = require('./database/models');

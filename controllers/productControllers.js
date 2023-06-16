@@ -113,6 +113,74 @@ const productController = {
     
         
     },
+    updatePost: (req, res) => {
+        let id = req.params.id;
+        let infoProd = req.body;
+      
+
+        let filtrado = {
+         where : [
+              {id: id}
+            ]}
+         producto.update(infoProd, filtrado)
+        .then((resultado) => {
+         return res.redirect("/product/id/" + id )
+        }).catch((err) => {
+            console.log(err);
+        });
+
+    },
+    search: (req, res) => {
+        let busqueda = req.query.search;
+
+        let filtrado = {
+          include: {
+            all:true,
+            nested: true
+          },
+          where: [
+              {[op.or]: [
+                { nombre: { [op.like]: '%' + busqueda + '%' } },
+                { descripcion: { [op.like]: '%' + busqueda + '%' } }
+              ]}
+          ],
+          order:[["created_at", 'DESC' ]]
+          }
+        producto.findAll(filtrado)
+        .then((result)=>{
+          //res.send(result)
+            return res.render("search-results", {
+                busqueda: busqueda,
+                listaProductos:result
+            })
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },
+    storeComentario: (req, res) => {
+        let errors = {}
+        let id = ''
+        if (req.session.user != undefined) {
+          id = req.session.user.id
+        } 
+        
+        let coment = {
+          texto: req.body.comentario,
+          id_producto: req.params.id,
+          id_perfil: id 
+  
+       }
+       
+      comentario.create(coment)
+       .then( function(resultado){
+        let id_producto = req.params.id
+           return res.redirect(`/product/id/${id_producto}`)
+          })
+       .catch (function(err){
+          console.log(err)
+      });
+    },
     deleteProduct: (req, res) => {
         let id = req.params.id;
         let info = req.body

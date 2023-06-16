@@ -13,7 +13,7 @@ router.get('/login', profileController.login);
 router.post('/login', profileController.loginPost);
 //EDIT
 router.get('/edit', profileController.showProfileEdit);
-router.post('/edit', profileController.editPost);
+router.post('/edit', profileController.edit);
 //LOGOUT
 router.post('/logout', profileController.logout);
 module.exports = router;
