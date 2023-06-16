@@ -12,7 +12,8 @@ var usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
 const searchResultsRouter = require('./routes/search-results')
 const session = require ('express-session')
-const db = require('./database/models')
+const db = require('./database/models');
+// const router = require('./routes/index');
 
 var app = express();
 

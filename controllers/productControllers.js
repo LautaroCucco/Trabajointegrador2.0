@@ -1,4 +1,4 @@
-const db = require('../db/models');
+const db = require('../database/models');
 const producto = db.Producto;
 const comentario = db.Comentario;
 
