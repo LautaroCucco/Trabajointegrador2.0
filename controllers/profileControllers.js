@@ -150,6 +150,56 @@ const profileController = {
 
 
     },
+    loginPost: (req.res) {
+        let emailBuscar = req.body.email;
+        let contraseniaBuscar = req.body.contrasenia;
+
+        let filtrado = {
+            where: [
+                {email: emailBuscar}
+            ]
+        }
+        let errors = {}
+
+        if (emailBuscar == undefined ) {
+            errors.message = 'No hay ningun mail ingresado';
+            res.locals.errors = errors;
+            return res.render('login')
+
+        } else if (contraseniaBuscar.length < 3) {
+            errors.message = 'Su contraseña neceista al menos 3 digitos';
+            res.locals.errors = errors;
+            return res.render('login')
+        } else {
+        
+            perfil.findOne(filtrado)
+            .then((result) => {
+
+                if (result != null) {
+                    let claveCorrecta = bcrypt.compareSync(contraseniaBuscar, result.contrasenia);
+                    if (claveCorrecta) {
+                        req.session.user = result.dataValues;
+                        if (req.body.rememberme != undefined) {
+                            res.cookie('userId', result.dataValues.id, { maxAge: 1000 * 60 * 100 })
+                        }
+                        return res.redirect("/")
+
+                    } else {
+                        errors.message = 'Email existente, contraseña equivocada';
+                        res.locals.errors = errors;
+                        return res.render('login')
+                    }
+                } else {
+                    errors.message = 'El email ingresado no esta registrado';
+                    res.locals.errors = errors;
+                    return res.render('login')
+                }
+            }).catch((err) => {
+                console.log(err);
+            }); 
+
+
+    },
     
     logout: (req, res) => {
         req.session.destroy();
@@ -157,7 +207,7 @@ const profileController = {
         return res.redirect('/')
     },
 
-    showProfileEdit: (req, res) => {
+    showProfileEdit; (req, res) => {
         let id = req.params.id;
         user.findByPk(id).then((result) => {
         return res.render('profile-edit', {usuario : result})
@@ -166,7 +216,7 @@ const profileController = {
         });
     },
 
-    updateProfile: (req, res) => {
+    updateProfile; (req, res) => {
             let info = req.body;
             let foto_perfil = req.file.filename;
             let usuario = {
@@ -199,7 +249,7 @@ const profileController = {
             
     
     },
-    follow : (req,res) => {
+    follow ; (req,res) => {
         let filtro = {
             where: [
                 {   id_usuario_seguido: req.params.id,
