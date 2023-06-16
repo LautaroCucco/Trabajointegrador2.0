@@ -3,14 +3,14 @@ const router = express.Router();
 const profileController = require('../controllers/profileController');
 
 //router.get('/', profileController.show);
-router.get('/id/:id', profileController.show);
+router.get('/id/:id', profileController.showProfile);
 
 // REGISTER
 router.get('/register', profileController.register); 
 router.post('/register', profileController.store); 
 
 // LOGIN
-router.get('/login', profileController.login);
+router.get('/login', profileController.showlogin);
 router.post('/login', profileController.loginPost);
 //EDIT
 router.get('/edit', profileController.edit);

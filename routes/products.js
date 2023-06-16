@@ -16,7 +16,7 @@ router.get('/search', productControllers.search);
 
 router.post('/comentario/:id', productControllers.storeComentario);
 
-router.post('/eliminar', productControllers.eliminarProducto);
+router.post('/eliminar', productControllers.deleteProduct);
 
 
 module.exports = router;
