@@ -1,47 +1,26 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2023 a las 15:37:15
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `trabajointegrador`
---
-
+USE tpintegrador;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comentarios`
+-- Estructura de tabla para la tabla `comments`
 --
 
 CREATE TABLE `comentarios` (
   `id` int(11) NOT NULL,
-  `producto_id` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  `texto_comentario` text NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `deletedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `comentario` text,
+  `products_id` int(11) DEFAULT NULL,
+  `users_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `comentarios`
+-- Volcado de datos para la tabla `comments`
 --
 
-INSERT INTO `comentarios` (`id`, `producto_id`, `usuario_id`, `texto_comentario`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+INSERT INTO `comentarios` (`id`, `products_id`, `users_id`, `comentario`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, 'Buenas! Queria consultar para ir a ver este vehiculo ¿Que dias se podria ir a ver?', '2023-04-10 18:27:55', '2023-04-10 18:27:55', NULL),
 (2, 1, 2, 'Hola! Que dias esta abierta la consecionaria?', '2023-04-10 18:27:55', '2023-04-10 18:27:55', NULL),
 (3, 1, 3, 'Buenas! Queria sacar un turno para ir a ver este auto y consultar por una cotizacion ¿Que dias estarian disponibles?', '2023-04-10 18:27:55', '2023-04-10 18:27:55', NULL),
@@ -62,24 +41,32 @@ INSERT INTO `comentarios` (`id`, `producto_id`, `usuario_id`, `texto_comentario`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Estructura de tabla para la tabla `followers`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `products`
 --
 
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  `nombre_producto` varchar(250) NOT NULL,
-  `descripcion_producto` text DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `deletedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `description` text,
+  `photo` varchar(1000) DEFAULT NULL,
+  `model` varchar(100) DEFAULT NULL,
+  `users_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `productos` (`id`, `usuario_id`, `nombre_producto`, `descripcion_producto`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+INSERT INTO `productos` (`id`, `users_id`, `model`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 'Toyota Supra mk4', 'Tiene un kilometraje de 150.000 km y viene con un motor  2JZ desarrollado por YAMAHA. Los 6 cilindros y dos turbocompresores generan 324 CV.', '2023-04-10 18:11:41', '2023-04-10 18:11:41', NULL),
 (2, 1, 'Nissan Skyline GTR R34', 'Tiene un kilometraje de 144.586 km y viene con un motor RB26DETT, con seis cilindros en línea generando 503 CV.', '2023-04-10 18:11:41', '2023-04-10 18:11:41', NULL),
 (3, 2, 'Lamborghini Aventador', 'Tiene un kilometraje de 35.869 km y viene con un motor un motor V12, el cual provee una potencia máxima de 700 CV.', '2023-04-10 18:11:41', '2023-04-10 18:11:41', NULL),
@@ -94,97 +81,86 @@ INSERT INTO `productos` (`id`, `usuario_id`, `nombre_producto`, `descripcion_pro
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `contrasena` varchar(250) NOT NULL,
-  `foto_perfil` varchar(250) DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
-  `dni` int(11) DEFAULT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `deletedAt` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `email` varchar(50) DEFAULT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apellido` varchar(50) DEFAULT NULL,
+  `contrasena` varchar(250) DEFAULT NULL,
+  `foto` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `contrasena`, `foto_perfil`, `fecha_nacimiento`, `dni`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-(1, 'Alevivonecai@Gmail.com', '113355', 'fp1.jpg', '0000-00-00', 30897231, '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
-(2, 'Cucco@Gmail.com', '779955', 'fp2.jpg', '0000-00-00', 43626147, '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
-(3, 'Juani_morozumi@Gmail.com', '553311', 'fp3.jpg', '0000-00-00', 44459687, '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
-(4, 'JoaquinGarcia7@Gmail.com', '557799', 'fp4.jpg', '0000-00-00', 44852753, '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
-(5, 'Bauticanalla@dominio.com', '448866', 'fp5.jpg', '0000-00-00', 45321496, '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL);
+INSERT INTO `usuarios` (`id`, `email`, `contrasena`, `foto`,`created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Alevivonecai@Gmail.com', '113355', 'fp1.jpg', '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
+(2, 'Cucco@Gmail.com', '779955', 'fp2.jpg', '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
+(3, 'Juani_morozumi@Gmail.com', '553311', 'fp3.jpg', '2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
+(4, 'JoaquinGarcia7@Gmail.com', '557799', 'fp4.jpg','2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL),
+(5, 'Bauticanalla@dominio.com', '448866', 'fp5.jpg','2023-04-10 18:03:04', '2023-04-10 18:03:04', NULL);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `comentarios`
+-- Indices de la tabla `comments`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `producto_id` (`producto_id`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `products_id` (`products_id`),
+  ADD KEY `users_id` (`users_id`);
 
 --
--- Indices de la tabla `productos`
+-- Indices de la tabla `products`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`);
+  ADD KEY `users_id` (`users_id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `usuarios`
+  ADD COLUMN `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  ADD COLUMN `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  ADD COLUMN `deleted_at` datetime DEFAULT NULL;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `comentarios`
+-- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `comentarios`
+-- Filtros para la tabla `comments`
 --
-ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`),
-  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-
---
--- Filtros para la tabla `productos`
---
-ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+comentarioscomentarioscomentarios

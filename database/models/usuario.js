@@ -86,7 +86,7 @@ module.exports = function (sequelize, dataTypes) {
         //foreign key
     };
     let config = {
-        tableName: 'perfiles',
+        tableName: 'usuarios',
         timestamps: true,
         underscored: true,
     };

@@ -60,23 +60,26 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-        nombre: {
+        usuario_id:{
+            type: dataTypes.INTEGER,
+        },
+        nombre_producto: {
             type: dataTypes.STRING(200),
         },
-        descripcion:{
+        descripcion_producto:{
             type: dataTypes.STRING(500),
         },
-        foto:{
+        img_producto:{
             type: dataTypes.STRING(500),
         },
-        id_perfil:{
-            type: dataTypes.INTEGER,
-        }
     };
     let config = {
         tableName: 'productos',
         timestamps: true,
         underscored: true,
+        created_at: 'created_at',
+        updated_at: 'updated_at',
+        deleted_at: 'deleted_at'
     };
 
     const Producto = sequelize.define(alias,cols,config);
