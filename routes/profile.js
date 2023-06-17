@@ -10,10 +10,10 @@ router.get('/register', profileController.register);
 
 // LOGIN
 router.get('/login', profileController.login);
-router.post('/login', profileController.loginPost);
+router.post('/login', profileController.procesarLogin);
 //EDIT
 router.get('/edit', profileController.showProfileEdit);
-router.post('/edit', profileController.edit);
+router.post('/edit', profileController.editPost);
 //LOGOUT
 router.post('/logout', profileController.logout);
 module.exports = router;

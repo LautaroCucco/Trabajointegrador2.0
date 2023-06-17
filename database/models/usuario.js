@@ -65,24 +65,22 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-        usuario: {
+        nombre: {
             type: dataTypes.STRING(200),
+        },
+        apellido:{
+            type:dataTypes.STRING(200),
         },
         email: {
             type: dataTypes.STRING(200),
         },
-        contrasenia: {
+        contrasena: {
             type: dataTypes.STRING(100),
         },
-        foto_perfil: {
+        foto: {
             type: dataTypes.STRING(500),
         },
-        fecha_nacimiento: {
-            type: dataTypes.DATE,
-        },
-        documento: {
-            type: dataTypes.INTEGER,
-        },
+        
         //foreign key
     };
     let config = {
@@ -97,12 +95,12 @@ module.exports = function (sequelize, dataTypes) {
         // Un perfil --> muchos productos
         Perfil.hasMany(models.Producto, {
             as: "producto",
-            foreignKey: "id_perfil"
+            foreignKey: "users_id"
         }),
         // Un perfil --> muchos comentarios
         Perfil.hasMany(models.Comentario, {
             as: "comentario",
-            foreignKey: "id_perfil"
+            foreignKey: "users_id"
         })
        };
     return Perfil;

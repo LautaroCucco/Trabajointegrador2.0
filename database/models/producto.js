@@ -60,16 +60,16 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-        usuario_id:{
+        users_id:{
             type: dataTypes.INTEGER,
         },
-        nombre_producto: {
+        model: {
             type: dataTypes.STRING(200),
         },
-        descripcion_producto:{
+        description:{
             type: dataTypes.STRING(500),
         },
-        img_producto:{
+        photo:{
             type: dataTypes.STRING(500),
         },
     };
@@ -89,12 +89,12 @@ module.exports = function (sequelize, dataTypes) {
         // Un perfil --> muchos productos
         Producto.belongsTo(models.Perfil , {
             as: "perfil",
-            foreignKey: "id_perfil"
+            foreignKey: "users_id"
         }),
         // Un producto --> muchos comentarios
         Producto.hasMany(models.Comentario, {
             as: "comentario",
-            foreignKey: "id_producto"
+            foreignKey: "products_id"
         })
     };
 

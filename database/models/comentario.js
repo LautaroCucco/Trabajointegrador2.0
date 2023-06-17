@@ -76,12 +76,12 @@ module.exports = function (sequelize, dataTypes) {
         // Un perfil --> muchos comentarios
         Comentario.belongsTo(models.Perfil , {
             as: "usuario",
-            foreignKey: "id_perfil"
+            foreignKey: "users_id"
         }),
         // Un producto --> muchos comentarios
         Comentario.belongsTo(models.Producto , {
             as: "producto",
-            foreignKey: "id_producto"
+            foreignKey: "products_id"
         })
     };
 

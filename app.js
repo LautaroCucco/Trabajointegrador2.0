@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
 const searchResultsRouter = require('./routes/search-results');
+const profileRouter = require('./routes/profile');
 
 
 // const router = require('./routes/index');
@@ -32,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/productos', productRouter)
 app.use('/search', searchResultsRouter)
+app.use('/profile', profileRouter)
 
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

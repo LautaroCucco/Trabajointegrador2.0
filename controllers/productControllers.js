@@ -34,24 +34,24 @@ const productController = {
         let imgProducto = req.file.filename;
         let car = {
             photo: imgProducto,
-            nombre_producto: info.nombre_producto,
-            descripcion_producto: info.descripcion,
-            usuario_id: req.session.user.id
+            model: info.nombre_producto,
+            description: info.descripcion,
+            users_id: req.session.user.id
         };
         let errors = {};
-         if (info.nombre_producto == "") {
+         if (info.model == "") {
             errors.message = 'A model is required';
             res.locals.errors = errors;
             return res.render('product-add')
 
             
-        } else if (info.descripcion == "") {
+        } else if (info.description == "") {
             errors.message = 'A description is needed';
             res.locals.errors = errors;
             return res.render('product-add')
 
 
-        } else if (imgProducto == undefined) {
+        } else if (photo == undefined) {
             errors.message = 'An image is required';
             res.locals.errors = errors;
             return res.render('product-add')
@@ -80,13 +80,13 @@ const productController = {
         });
     },
     updateProduct: (req, res) => {
-            let info = req.body;
-            let imgProducto = req.file.filename;
+            let description = req.body;
+            let photo = req.file.filename;
             let car = {
                 photo: imgProducto,
-                nombre_producto: info.nombre_producto,
-                descripcion_producto: info.descripcion,
-                usuario_id: req.session.user.id
+                model: info.nombre_producto,
+                description: info.descripcion,
+                users_id: req.session.user.id
             }
     
             let filtro = {
@@ -98,16 +98,16 @@ const productController = {
             if(req.session.user.id == car.usuario_id) {
             producto.update(car, filtro)
             .then((result) => {
-                console.log(car.usuario_id);
-                console.log(car.usuario_id);
+                console.log(car.users_id);
+                console.log(car.users_id);
                 return res.redirect('/')
             }).catch((err) => {
                 console.log(err);
             });
             }
             else {
-                console.log(car.usuario_id);
-                console.log(car.usuario_id);
+                console.log(car.users_id);
+                console.log(car.users_id);
                 return res.redirect('/profile/login')
             }
     

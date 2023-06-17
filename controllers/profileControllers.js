@@ -58,7 +58,7 @@ const profileController = {
                             req.session.user = result.dataValues;
 
                             if (req.body.recordarme != undefined) {
-                                res.cookie('usuario_id', result.dataValues.id, { maxAge: 1000 * 60 * 100 })
+                                res.cookie('users_id', result.dataValues.id, { maxAge: 1000 * 60 * 100 })
                             }
 
                             return res.redirect("/")
@@ -220,7 +220,7 @@ const profileController = {
     
     logout: (req, res) => {
         req.session.destroy();
-        res.clearCookie('usuario_id');
+        res.clearCookie('users_id');
         return res.redirect('/')
     },
 
@@ -241,7 +241,7 @@ const profileController = {
                 nombre: info.nombre,
                 apellido: info.apellido,
                 foto: foto_perfil,
-                usuario_id : info.usuario_id
+                users_id : info.usuario_id
             }
             let filtro = {
                 where: {
