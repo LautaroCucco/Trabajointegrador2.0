@@ -6,10 +6,10 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
+	<% if (locals.user == undefined) { %>
+		<%- include('./partials/headerNoLogueado') %> 
+	<% } else { %>
+	 <%- include('./partials/headerLogueado')  %>
 	<% } %>
 	<!-- /Header -->
 
@@ -27,23 +27,23 @@
 			  <h2 class="active"> Agregar Producto </h2>
 			  <!-- Icon -->
 		  
-			  <form>
-				<label for="Image of the product" class= "letraForm"> Imagen del producto: </label>
-				<input type="file" name="img" placeholder= "image of the product" value="">
-				<hr>
-				<label for="Name of the product" class= "letraForm"> Nombre del producto: </label>
-				<input type="text" name="name of the product" placeholder= "name of the product" value=""> 
-				<hr>
-				<label for="Description" class= "letraForm"> Descripcion: </label>
-				<input type="text" name="descripction" placeholder="description">
-				<hr>
-				<div>
-					<label for="age" class= "letraForm"> Fecha de lanzamiento: </label>
-					<input type="date" name="birthday" placeholder= "Upload date" value="">
-				</div>
-				<hr>
-				<input type="submit" class="fadeIn fourth" value="ADD">
-			  </form>
+					<form action="/product/add" method="POST" class="formLog">
+
+						<article class="inputForm">
+							<input type="text" name="nombre" placeholder= "Nombre del producto" value="" class="text"> 
+						</article>
+
+						<article class="inputForm">
+							<input type="text" name="descripcion" placeholder="Descripción" value="" class="text">
+						</article>
+
+						<article class="inputForm">
+							<input type="text" name="foto" value="" placeholder="Foto del producto" class="text">
+						</article>
+
+						<button type="submit" class="ingresar">Publicar</button>
+
+					</form>
 	
 			</div>
 		  </div>

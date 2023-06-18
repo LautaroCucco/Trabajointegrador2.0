@@ -11,6 +11,7 @@ const indexController = {
         }
         )
         .then((result) => {
+            // return res.send(result)
             return res.render('indexx', {producto : result})
 
         }).catch((err) => {
@@ -18,9 +19,4 @@ const indexController = {
         });
      }, 
 }
-module.exports = indexController
-
-
-
-
 module.exports = indexController

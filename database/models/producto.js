@@ -63,23 +63,21 @@ module.exports = function (sequelize, dataTypes) {
         users_id:{
             type: dataTypes.INTEGER,
         },
+        photo:{
+            type: dataTypes.STRING(1000),
+        
         model: {
-            type: dataTypes.STRING(200),
+            type: dataTypes.STRING(100),
         },
         description:{
             type: dataTypes.STRING(500),
         },
-        photo:{
-            type: dataTypes.STRING(500),
         },
     };
     let config = {
         tableName: 'productos',
         timestamps: true,
         underscored: true,
-        created_at: 'created_at',
-        updated_at: 'updated_at',
-        deleted_at: 'deleted_at'
     };
 
     const Producto = sequelize.define(alias,cols,config);

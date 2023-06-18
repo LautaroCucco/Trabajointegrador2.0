@@ -7,7 +7,7 @@ router.get('/id/:id', profileController.showProfile);
 
 // REGISTER
 router.get('/register', profileController.register); 
-
+router.post('/register', profileController.procesarRegister);
 // LOGIN
 router.get('/login', profileController.login);
 router.post('/login', profileController.procesarLogin);

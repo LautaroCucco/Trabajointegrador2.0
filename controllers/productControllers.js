@@ -7,16 +7,14 @@ const productController = {
         let id = req.params.id;
         
         let filtro = {
-            include : {
-                all: true,
-                nested: true
-            },
-            order : [["comment", "createdAt" , "DESC"]]
+                include: [ { association: 'comentario' , include : [{ association : 'perfil'}]}],
+                order: [[ "createdAt" , "DESC"]]
         };
 
-        producto.findByPk(id, filtro)
+        producto.findByPk(id)
             .then((result) => {
-                return res.render('producto', { producto: result.dataValues })
+                // return res.send(result)
+                return res.render('product', { producto: result.dataValues })
             }).catch((err) => {
                 console.log(err);
             });

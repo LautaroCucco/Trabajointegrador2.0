@@ -7,37 +7,41 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
+	<% if (locals.user == undefined) { %>
+		<%- include('./partials/headerNoLogueado') %> 
+	<% } else { %>
+	 <%- include('./partials/headerLogueado')  %>
 	<% } %>
 	<!-- /Header -->
 	
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= productos[1].nombre %> </h2> 
+			<% for (let i = 0; i < producto.length; i++) {%>
+			<h2 class="products-title"><%= producto[i].model %> </h2> 
 			<p class="product-detail-description">
 				<a class= "editButton" href="/products">Editar</a>
 			</p>
+			<% } %>
 		</div>
 		<div class="product-detail">
 			<div class="row">
+				<% for (i = 0; i <producto.length; i++) {%>
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= productos[1].imagen%>" alt="" class="product-detail-img">
+					<img src="<%= producto[i].photo%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= productos[1].descripcion  %> </p>
+						<%= producto[i].description  %> </p>
 				</article>
+				<% } %>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for (let i = 0; i < comentarios.length; i++) { %>
+						<% for (let i = 0; i < producto.comentario.length; i++) { %>
 						<article>
-							<img src= <%= comentarios[i].fotoDePer %> alt="">
+							<a href="/profile/id/<%= producto.comentario[i].perfil.id%>"><img src=<%= producto.comentario[i].perfil.foto %> alt="Foto perfil"></a>
 							<div class="data">
 								<p class="user">
-								<strong> <a href="/profile"><%= comentarios[i].nombreDeUs%> </a> </strong>
-								<%= comentarios[i].textoDelComentario %> </p>
+								<strong> <a href="/profile/id"><%= comentario[i].texto%> </a> </strong>
+								<%= comentario[i].texto%> </p>
 							</div>
 						</article>
 						<% } %>

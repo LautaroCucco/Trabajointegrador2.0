@@ -6,8 +6,13 @@
 <%- include('./partials/head') %>
 
 <body>
-	<%- include('./partials/headerNoLogueado') %>
+<% if (locals.user == undefined) { %>
+	<%- include('./partials/headerNoLogueado') %> 
+<% } else { %>
+ <%- include('./partials/headerLogueado')  %>
+<% } %>
 
+	
 	<!-- Banner -->
 <!-- 	<div class="banner">
 		<img src="./images/bannerprog2.jpg" alt="Banner de ofertas">
@@ -24,14 +29,14 @@
 			<% for (let i = 0; i < 4; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/productos">
+					<a href="/productos/id/<%= producto[i].id %>">
 						<figure class="product-box_image">
-							<img src="<%= producto[i].imagen %>"  alt="Autos">
+							<img src="<%= producto[i].photo %>"  alt="Autos">
 						</figure>
 						<article class="product-box_data">
-							<h2> <%= producto[i].nombre  %>  </h2>
-							<p> <%= producto[i].descripcion  %> </p>
-							<p><%= producto[i].comentarios %></p>
+							<h2> <%= producto[i].model  %>  </h2>
+							<p> <%= producto[i].description  %> </p>
+							<p><%=// producto[i].comentarios %></p>
 						</article>
 					</a>
 				</section>
@@ -46,14 +51,14 @@
 			<% for (let i = 4; i < 8; i++) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/productos">
+						<a href="/productos/id/<%= producto[i].id %>">
 							<figure class="product-box_image">
-								<img src="<%= producto[i].imagen %>"  alt="Autos">
+								<img src="<%= producto[i].photo %>"  alt="Autos">
 							</figure>
 							<article class="product-box_data">
-								<h2> <%= producto[i].nombre  %>  </h2>
-								<p> <%= producto[i].descripcion  %> </p>
-								<p><%= producto[i].comentarios %></p>
+								<h2> <%= producto[i].model  %>  </h2>
+								<p> <%= producto[i].description %> </p>
+								<p><%= //producto[i].comentarios %></p>
 							</article>
 						</a>
 					</section>

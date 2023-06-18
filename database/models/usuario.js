@@ -66,19 +66,19 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.INTEGER,
         },
         nombre: {
-            type: dataTypes.STRING(200),
+            type: dataTypes.STRING(50),
         },
         apellido:{
-            type:dataTypes.STRING(200),
+            type:dataTypes.STRING(50),
         },
         email: {
-            type: dataTypes.STRING(200),
+            type: dataTypes.STRING(50),
         },
         contrasena: {
-            type: dataTypes.STRING(100),
+            type: dataTypes.STRING(250),
         },
         foto: {
-            type: dataTypes.STRING(500),
+            type: dataTypes.STRING(200),
         },
         
         //foreign key

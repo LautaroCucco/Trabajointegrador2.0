@@ -6,10 +6,10 @@
 
 <body>
 	<!-- Header -->
-	<%if (logueado){%>
-		<%- include("partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("partials/headerNoLogueado.ejs") %>
+	<% if (locals.user == undefined) { %>
+		<%- include('./partials/headerNoLogueado') %> 
+	<% } else { %>
+	 <%- include('./partials/headerLogueado')  %>
 	<% } %>
 	<!-- /Header -->
 
@@ -20,21 +20,21 @@
 				<h2 class="products-title">Resultados de busqueda: </h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% if (listaProductos.length == 0) { %>
+			<% if (producto.length == 0) { %>
 				<h2>No hay resultados para tu búsqueda</h2>
 			   <% } else {%>
-				   <% for( let i = 0; i < listaProductos.length; i++ ) { %>
+				   <% for( let i = 0; i < producto.length; i++ ) { %>
 					   <article class="col-12 col-sm-6 col-lg-3">
 						   <section class="product-box">
-							   <a href="id/<%=listaProductos[i].id%>">
+							   <a href="id/<%=producto[i].id%>">
 								   <figure class="product-box_image">
-									   <img src="<%=listaProductos[i].foto %>" alt="Imagen de <%=listaProductos[i].nombre %>">
+									   <img src="<%=producto[i].photo %>" alt="Imagen de <%=producto[i].model %>">
 								   </figure>
 								   <article class="product-box_data">
-									   <h2><%=listaProductos[i].nombre %></h2>
-									   <p><%=listaProductos[i].descripcion %></p>
-									   <p>Comentarios: <%= listaProductos[i].perfil.comentario.length %></p>
-									   <p>Creador: <a href="profile/id/<%= listaProductos[i].perfil.id %>"> <%= listaProductos[i].perfil.usuario %> </a></p>
+									   <h2><%=producto[i].model %></h2>
+									   <p><%=producto[i].description %></p>
+									   <p>Comentarios: <%= producto[i].perfil.comentario %></p>
+									   <p>Creador: <a href="profile/id/<%= producto[i].perfil.id %>"> <%= producto[i].perfil.nombre %> </a></p>
 								   </article>
 							   </a>
 						   </section>

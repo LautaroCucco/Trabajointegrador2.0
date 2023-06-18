@@ -53,15 +53,17 @@ module.exports = function (sequelize, dataTypes) {
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
-        texto: {
+        products_id: {
+            type: dataTypes.INTEGER,
+        },
+        users_id: {
+            type: dataTypes.INTEGER,
+        },
+        comentario: {
             type: dataTypes.STRING(500),
         },
-        id_producto: {
-            type: dataTypes.INTEGER,
-        },
-        id_perfil: {
-            type: dataTypes.INTEGER,
-        }
+       
+        
     };
     let config = {
         tableName: 'comentarios',

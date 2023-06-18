@@ -1,25 +1,36 @@
 const db = require('../database/models');
-
-const Usuario = db.Usuario
+const Usuario = db.Perfil
 const bcrypt = require('bcryptjs');
-const Seguidor = db.Seguidor
+const producto = db.Producto;
+const comentario = db.Comentario;
 
 const profileController = {
     showProfile: function (req, res) {
         let id = req.params.id;
-        user.findByPk(id,  {
-            include:
-            {
-                all: true,
-                nested: true
+        let relaciones = {include: {all:true, nested: true}};
+        user.findByPk(id, relaciones)
+        .then(function (result){
+            let miSession = req.session.user;
+            let elMismoUser = false;
+            if (miSession != undefined && id == req.session.user.id){
+                res.locals.user = resultado.dataValues;
+                elMismoUser = true;
             }
+            return res.render("profile",{
+                perfil: result, userCorrecto: elMismoUser
+            })
+            // include:
+            // {
+            //     all: true,
+            //     nested: true
+            // }
         })
-            .then((result) => {
-                // return res.send(result)
-                return res.render('perfil', { perfil: result.dataValues })
-            }).catch((err) => {
-                console.log(err);
-            });
+            // .then((result) => {
+            //     // return res.send(result)
+            //     return res.render('perfil', { perfil: result.dataValues })
+            // }).catch((err) => {
+            //     console.log(err);
+            // });
     },
 
     login: function (req, res) {
@@ -32,22 +43,6 @@ const profileController = {
                 email: info.email
             }]
         };
-        //validacion de email
-        let errors = {};
-
-        if (info.email == "") {
-            errors.message = 'El campo email esta vacio';
-            res.locals.errors = errors;
-            return res.render('login')
-
-        } else if (info.contrasena.length < 3) {
-            errors.message = 'Su contraseña debe tener mas de 3 caracteres';
-            res.locals.errors = errors;
-            return res.render('login')
-        }
-
-
-        else {
             Usuario.findOne(filtro)
                 .then((result) => {
 
@@ -63,92 +58,41 @@ const profileController = {
 
                             return res.redirect("/")
 
-                        } else {
-                            errors.message = 'Este email esta registrado pero no coincide con su contraseña';
-                            res.locals.errors = errors;
-                            return res.render('login')
                         }
-                    } else {
-                        errors.message = 'El email no existe';
-                        res.locals.errors = errors;
-                        return res.render('login')
-                    }
+                    } 
                 }).catch((err) => {
                     console.log(err);
                 });
-        }
 
     },
     register: function (req, res) {
         return res.render('register')
-
     },
     procesarRegister: function (req, res) {
         let info = req.body;
-        let foto_perfil = req.file.filename;
-        console.log(info);
-        let errors = {};
         let filtro = {
             where: [{
                 email: info.email
             }]
         };
-        //requerimientos de validacion
-        if (info.email == "") {
-            errors.message = "Se requiere un email";
-            res.locals.errors = errors;
-            return res.render('register')
-
-        } else if (info.contrasena.length < 3) {
-            errors.message = 'Su contraseña debe tener mas de 3 caracteres';
-            res.locals.errors = errors;
-            return res.render('register')
-
-        } else if (info.nombre.length == "") {
-            errors.message = 'Ingresar tu nombre';
-            res.locals.errors = errors;
-            return res.render('register')
-        
-        } else if (foto_perfil == ""){
-            errors.message = 'Se requiere una imagen';
-            res.locals.errors = errors;
-            return res.render('register')
-
-        } 
-        else {
-            user.findOne(filtro)
+        Usuario.findOne(filtro)
                 .then((result) => {
-                    if (result == null) {
-                        let info = req.body;
-                        let foto_perfil = req.file.filename;
-                        let usuario = {
-                            email: info.email,
+            if(result == null){
+                let usuario = {
                             nombre: info.nombre,
                             apellido: info.apellido,
+                            email: info.email,
                             contrasena: bcrypt.hashSync(info.contrasena, 10),
-                            foto: foto_perfil,
+                            foto: info.foto,
                         };
-                        user.create(usuario)
+                        Usuario.create(usuario)
                             .then((result) => {
                                 return res.redirect('/profile/login')
                             }).catch((err) => {
                                 console.log(err);
-                            })
-                        
-                    }
-                    else {
-                        errors.message = 'Este email ya esta registrado';
-                        res.locals.errors = errors;;
-                        return res.render('register')
-                    }
-                }).catch(function (err) {
-                    console.log(err);
+                        })    
+                    }    
                 })
-          }
-           
-
-
-
     },
     loginPost: (req, res) => {
         let emailBuscar = req.body.email;

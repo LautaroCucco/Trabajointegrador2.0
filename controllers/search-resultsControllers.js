@@ -12,7 +12,7 @@ const searchResultsController = {
                { description: { [op.like]: `%${ palabraBuscada}%` } }
              ]
            }, 
-            include: [ { association: 'usuario' }],
+            include: [ { association: 'perfil' }],
             order: [[ "createdAt" , "DESC"]]
            }
       

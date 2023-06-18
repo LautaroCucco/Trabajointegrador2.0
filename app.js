@@ -10,7 +10,7 @@ const db = require('./database/models');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const productRouter = require('./routes/products');
+let productRouter = require('./routes/products');
 const searchResultsRouter = require('./routes/search-results');
 const profileRouter = require('./routes/profile');
 
@@ -28,6 +28,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+/* antes de las rutas debemos configurar la session */
+
+
+app.use(session({
+  secret : 'myApp',
+  resave : false,
+  saveUninitialized : true
+}));
+
+/* pasar info al front - configuracion del locals */
+app.use(function (req, res, next) {
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user
+   
+    return next();
+  }
+  return next();
+});
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

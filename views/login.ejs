@@ -6,11 +6,11 @@
 
 <body>
 	<!-- Include Header -->
-	<%if (logueado){%>
-		<%- include("/partials/headerLogueado.ejs") %>
-		<%} else { %>
-		<%- include("/partials/headerNoLogueado.ejs") %>
-	<% } %>
+	<%//if (logueado){%>
+		<%- //include("/partials/headerLogueado.ejs") %>
+		<%//} else { %>
+		<%- //include("/partials/headerNoLogueado.ejs") %>
+	<% //} %>
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
@@ -28,9 +28,9 @@
 			  <!-- Icon -->
 		  
 			  <!-- Login Form -->
-			  <form class="form-especial">
-				<input type="text" id="login" class="fadeIn second" name="login" placeholder="email">
-				<input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+			  <form class="form-especial" action="/profile/login" method="POST">
+				<input type="text" id="login" class="fadeIn second" name="email" placeholder="email">
+				<input type="password" id="password" class="fadeIn third" name="contrasena" placeholder="password">
 				<label class= "letraForm" for="checkbox"> Recuerdame </label>
 				<input type="checkbox" name="recordarme" value= "remindMe" >
 				<hr>
