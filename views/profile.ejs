@@ -9,18 +9,18 @@
 	<% if (locals.user != undefined) { %>
 		<%- include('./partials/headerLogueado') %> 
 	<% } else { %>
-	 <%- include('./partials/header')  %>
+	 <%- include('./partials/headerNoLogueado')  %>
 	<% } %>
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= perfil.foto%>  " alt="foto de perfil" class="foto-perfil">
+				<img src="<%= perfil.foto %>" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%=perfil.nombre %>   
+					<h1 class="main-title"><%= perfil.nombre %>   
 						<a href="/users/edit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -29,7 +29,7 @@
 				</div>
 				<div>
 					<ul class="">
-						<li class="listItems"><%=perfil.email %> </li>
+						<li class="listItems"><%= perfil.descripcion %></li>
 					</ul>
 				</div>
 			</div>
@@ -50,17 +50,17 @@
 					<section class="product-box">
 						<a href="/productos">
 							<figure class="product-box_image">
-								<img src="<%= perfil.producto[i].photo %>"  alt="Autos">
+								<img src="<%= perfil.producto[i].photo %>" alt="Autos">
 							</figure>
 							<article class="product-box_data">
-								<h2> <%= perfil.producto[i].model  %>  </h2>
-								<p> <%= perfil.producto[i].description %> </p>
-								<p>Cantidad de comentarios:<%= perfil.comentario.length %> </p>
+								<h2><%= perfil.producto[i].model %></h2>
+								<p><%= perfil.producto[i].description %></p>
+								<p>Cantidad de comentarios: <%= perfil.producto[i].comentario.length %></p>
 							</article>
 						</a>
 					</section>
 				</div>
-				<% } %>
+			<% } %>
 
 		</div>
 	</div>

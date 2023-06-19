@@ -4,7 +4,6 @@
 <!-- Include Head -->
 <%- include('./partials/head')  %> 
 
-
 <body>
 	<!-- Header -->
 	<% if (locals.user == undefined) { %>
@@ -17,33 +16,42 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<% for (let i = 0; i < producto.length; i++) {%>
-			<h2 class="products-title"><%= producto[i].model %> </h2> 
-			<p class="product-detail-description">
-				<a class= "editButton" href="/products">Editar</a>
-			</p>
+			<% for (let i = 0; i < producto.length; i++) { %>
+				<h2 class="products-title"><%= producto[i].model %> </h2> 
+				<p class="product-detail-description">
+					<a class="editButton" href="/products">Editar</a>
+				</p>
 			<% } %>
 		</div>
 		<div class="product-detail">
 			<div class="row">
-				<% for (i = 0; i <producto.length; i++) {%>
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%= producto[i].photo%>" alt="" class="product-detail-img">
-					<p class="product-detail-description">
-						<%= producto[i].description  %> </p>
-				</article>
+				<% if (producto.perfil) { %>
+					<p class="creador">Creado por:<strong> <a href="/profile/id/<%= producto.perfil.nombre %>"><%= producto.perfil.nombre %></a></strong></p>
+				<% } %>
+				<% for (let i = 0; i < producto.length; i++) { %>
+					<article class="col-12 col-lg-8 product-detail-info">
+						<img src="<%= producto[i].photo %>" alt="<%= producto[i].model %>" class="product-detail-img">
+						<p class="product-detail-description">
+							<%= producto[i].description %>
+						</p>
+					</article>
 				<% } %>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for (let i = 0; i < producto.comentario.length; i++) { %>
-						<article>
-							<a href="/profile/id/<%= producto.comentario[i].perfil.id%>"><img src=<%= producto.comentario[i].perfil.foto %> alt="Foto perfil"></a>
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/profile/id"><%= comentario[i].texto%> </a> </strong>
-								<%= comentario[i].texto%> </p>
-							</div>
-						</article>
+						<% for (let i = 0; i < producto.comentario; i++) { %>
+							<article>
+								<a href="/profile/id/<%= producto.comentario[i].users_id.id %>">
+									<img src="<%= producto.comentario[i].perfil.foto %>" alt="Foto perfil">
+								</a>
+								<div class="data">
+									<p class="user">
+										<strong>
+											<a href="/profile/id"><%= producto.comentario[i].texto %></a>
+										</strong>
+										<%= producto.comentario[i].texto %>
+									</p>
+								</div>
+							</article>
 						<% } %>
 					</section>
 					<form class="form" action="" method="POST">
@@ -63,3 +71,4 @@
 
 </body>	
 </html>
+

@@ -8,7 +8,7 @@ const profileController = {
     showProfile: function (req, res) {
         let id = req.params.id;
         let relaciones = {include: {all:true, nested: true}};
-        user.findByPk(id, relaciones)
+        Usuario.findByPk(id, relaciones)
         .then(function (result){
             let miSession = req.session.user;
             let elMismoUser = false;
