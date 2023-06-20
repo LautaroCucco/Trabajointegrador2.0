@@ -16,37 +16,34 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<% for (let i = 0; i < producto.length; i++) { %>
-				<h2 class="products-title"><%= producto[i].model %> </h2> 
-				<p class="product-detail-description">
+			<h2 class="products-title"><%= producto.model %> </h2> 
+			<p class="product-detail-description">
 					<a class="editButton" href="/products">Editar</a>
-				</p>
-			<% } %>
+			</p>
+		
 		</div>
 		<div class="product-detail">
 			<div class="row">
-				<% if (producto.perfil) { %>
-					<p class="creador">Creado por:<strong> <a href="/profile/id/<%= producto.perfil.nombre %>"><%= producto.perfil.nombre %></a></strong></p>
-				<% } %>
-				<% for (let i = 0; i < producto.length; i++) { %>
+				<p class="creador"> Creado por:<strong> <a href="/profile/id/<%= producto.perfil %>"> <%= producto.perfil %> </a></strong></p>
+
 					<article class="col-12 col-lg-8 product-detail-info">
-						<img src="<%= producto[i].photo %>" alt="<%= producto[i].model %>" class="product-detail-img">
+						<img src=<%= producto.photo %> alt= <% producto.model %> class="product-detail-img">
 						<p class="product-detail-description">
-							<%= producto[i].description %>
+							<%= producto.description %>
 						</p>
 					</article>
-				<% } %>
+
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<% for (let i = 0; i < producto.comentario; i++) { %>
+						<% for (let i = 0; i < producto.comentario.length; i++) { %>
 							<article>
-								<a href="/profile/id/<%= producto.comentario[i].users_id.id %>">
-									<img src="<%= producto.comentario[i].perfil.foto %>" alt="Foto perfil">
+								<a href="/profile/id/<%= producto.comentario[i].dataValues.id %>">
+									<img src="<%= producto.comentario[i].dataValues.foto %>" alt="Foto perfil">
 								</a>
 								<div class="data">
 									<p class="user">
 										<strong>
-											<a href="/profile/id"><%= producto.comentario[i].texto %></a>
+											<a href="/profile/id"><%= producto.comentario[i].dataValues[0] %></a>
 										</strong>
 										<%= producto.comentario[i].texto %>
 									</p>
@@ -71,4 +68,3 @@
 
 </body>	
 </html>
-

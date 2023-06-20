@@ -49,8 +49,8 @@ CREATE TABLE `productos` (
   `id` int unsigned primary key auto_increment NOT NULL,
   `users_id` int(11) DEFAULT NULL,
   `photo` varchar(1000) NULL,
-  `model` varchar(100) DEFAULT NULL,
-  `description` varchar (500),
+  `model` varchar(100) NOT NULL,
+  `description` varchar (500), 
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -79,10 +79,10 @@ INSERT INTO `productos` (`id`, `users_id`, `photo`, `model`, `description`, `cre
 
 CREATE TABLE `usuarios` (
   `id` int unsigned primary key auto_increment NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `apellido` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL UNIQUE,
-  `contrasena` varchar(250) DEFAULT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL UNIQUE,
+  `contrasena` varchar(250) NOT NULL,
   `foto` varchar(200) NULL,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP

@@ -5,18 +5,31 @@ const comentario = db.Comentario;
 const productController = {
     showProduct: (req, res) => {
         let id = req.params.id;
-        
-        let filtro = {
-                include: [ { association: 'comentario' , include : [{ association : 'perfil'}]}],
-                order: [[ "createdAt" , "DESC"]]
+        let relaciones = {
+            include:[
+              {  
+                 association: "comentario",
+                 include:[{association: 'usuario'}] //"perfil"
+              }, 
+           ],
+           order: [
+              [ "comentario", "createdAt", "DESC"]
+           ],
         };
+        console.log('hola');
+        
+        // let filtro = {
+        //         include: [ { association: 'comentario' , include : [{ association : 'usuario'}]}],
+        //         order: [[ "createdAt" , "DESC"]]
+        // };
 
-        producto.findByPk(id)
+        producto.findByPk(id, relaciones)
             .then((result) => {
                 // return res.send(result)
+                console.log('entre aca', result.dataValues.comentario[0].dataValues);
                 return res.render('product', { producto: result.dataValues })
             }).catch((err) => {
-                console.log(err);
+                console.log('MILANESA', err);
             });
     },
     showProductAdd: function (req, res) {

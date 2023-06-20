@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const data = require('../db_1/data')
 const Usuario = db.Perfil
 const bcrypt = require('bcryptjs');
 const producto = db.Producto;
@@ -6,14 +7,18 @@ const comentario = db.Comentario;
 
 const profileController = {
     showProfile: function (req, res) {
-        let id = req.params.id;
+        console.log('pepe',req)
+        let id = req.session.Session.user;
+        
         let relaciones = {include: {all:true, nested: true}};
+        console.log(id)
         Usuario.findByPk(id, relaciones)
         .then(function (result){
+            console.log(result)
             let miSession = req.session.user;
             let elMismoUser = false;
             if (miSession != undefined && id == req.session.user.id){
-                res.locals.user = resultado.dataValues;
+                res.locals.user = result.dataValues;
                 elMismoUser = true;
             }
             return res.render("profile",{
@@ -24,13 +29,9 @@ const profileController = {
             //     all: true,
             //     nested: true
             // }
-        })
-            // .then((result) => {
-            //     // return res.send(result)
-            //     return res.render('perfil', { perfil: result.dataValues })
-            // }).catch((err) => {
-            //     console.log(err);
-            // });
+        }).catch((err) => {
+                console.log(err);
+             });
     },
 
     login: function (req, res) {
